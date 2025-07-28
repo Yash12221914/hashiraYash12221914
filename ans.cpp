@@ -83,7 +83,7 @@ int evaluateAtX(const vector<pair<int, int>>& shares, int x) {
 int main() {
     ifstream inFile("input.json");
     if (!inFile) {
-        cerr << "❌ Error: Could not open input.json" << endl;
+        cerr << " Error: Could not open input.json" << endl;
         return 1;
     }
 
@@ -91,7 +91,6 @@ int main() {
     inFile >> j;
 
     int k = j["keys"]["k"];
-    // int n = j["keys"]["n"]; // Unused — removed warning
 
     vector<pair<int, int>> allShares;
 
@@ -131,7 +130,7 @@ int main() {
 
         int candidateSecret = interpolateAtZero(selected);
 
-        // ✅ VALIDATION BLOCK FIXED — no structured binding
+        //  VALIDATION BLOCK FIXED — no structured binding
         bool valid = true;
         for (size_t i = 0; i < allShares.size(); ++i) {
             int x = allShares[i].first;
@@ -152,9 +151,9 @@ int main() {
     } while (next_permutation(indices.begin(), indices.end()));
 
     if (found) {
-        cout << "✅ Secret key is: " << finalSecret << endl;
+        cout << " Secret key is: " << finalSecret << endl;
     } else {
-        cout << "❌ Could not validate secret with any combination of shares" << endl;
+        cout << " Could not validate secret with any combination of shares" << endl;
     }
 
     return 0;
